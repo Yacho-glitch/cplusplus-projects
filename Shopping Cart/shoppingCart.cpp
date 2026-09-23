@@ -32,7 +32,15 @@ int main() {
         cout << "\nChoice : ";
         cin >> choice;
 
+        switch(choice) {
+            case 2:
+                addProduct();
+                break;
+        }
+
     } while (choice != 6);
+
+
 
     return 0;
 }
@@ -40,17 +48,21 @@ int main() {
 // showMenu(), viewCart(), removeProduct(), checkout()
 
 void addProduct() {
-    
+
     Product product;
 
     cout << "Enter Product Name : ";
     cin >> product.name;
+
     cout << "Enter Product Price : ";
     cin >> product.price;
+    
     cout << "Enter Quantity : ";
     cin >> product.quantity;
 
-    cout << "Product Added Successfully";
+    cart.push_back(product);
+
+    cout << "Product Added Successfully\n\n";
 };
 
 
