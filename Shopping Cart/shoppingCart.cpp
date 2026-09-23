@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector> // A dynamic array "vector"
+#include <iomanip> // input/output formating (table...)
 using namespace std;
 
 struct Product {
@@ -36,11 +37,15 @@ int main() {
             case 2:
                 addProduct();
                 break;
+            case 3:
+                viewCart();
+                break;
+            case 6:
+                cout << "Goodbye";
+                break;
         }
 
     } while (choice != 6);
-
-
 
     return 0;
 }
@@ -56,7 +61,7 @@ void addProduct() {
 
     cout << "Enter Product Price : ";
     cin >> product.price;
-    
+
     cout << "Enter Quantity : ";
     cin >> product.quantity;
 
@@ -65,29 +70,28 @@ void addProduct() {
     cout << "Product Added Successfully\n\n";
 };
 
+void viewCart() {
 
+    if (cart.empty()) {
+        cout << "Cart is empty.\n";
+        return;
+    }
 
+    cout << "========================================================\n";
+    cout << left
+         << setw(5)  << "ID"
+         << setw(20) << "Product"
+         << setw(15) << "Price"
+         << setw(10) << "Quantity"
+         << endl;
+    cout << "=========================================================\n";
 
-
-
-
-
-
-
-
-
-
-
-    // string choice = "1. Show Products\n2. Add Product\n3. View Cart\n4. Remove Product\n5. Checkout\n6. Exit\n\nChoice: ";
-    // Product item1 = { "Apple", 1.50 };
-    // Product item2 = { "Bread", 3.00 };
-
-    // products.push_back(item1);
-    // products.push_back(item2);
-
-    // cout << "You have " << cart.size() << " items in your cart." << endl;
-    // cout << "The first one is " << cart.at(0);
-
-    // cout << "====== SHOPPING CART ======\n";
-    // cout << choice << "\n";
-    // cout << products;
+    for (int i = 0; i < cart.size(); i++) {
+        cout << left
+             << setw(5)  << i + 1 
+             << setw(20) << cart[i].name
+             << setw(15) << cart[i].price
+             << setw(10) << cart[i].quantity
+             << endl;
+    }
+};
