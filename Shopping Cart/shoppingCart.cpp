@@ -34,11 +34,20 @@ int main() {
         cin >> choice;
 
         switch(choice) {
+            case 1:
+                cout << "List of the product";
+                break;
             case 2:
                 addProduct();
                 break;
             case 3:
                 viewCart();
+                break;
+            case 4:
+                cout << "Remove product";
+                break;
+            case 5:
+                cout << "Checkout";
                 break;
             case 6:
                 cout << "Goodbye";
