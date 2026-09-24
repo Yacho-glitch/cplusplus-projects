@@ -44,7 +44,7 @@ int main() {
                 viewCart();
                 break;
             case 4:
-                cout << "Remove product";
+                removeProduct();
                 break;
             case 5:
                 cout << "Checkout";
@@ -59,7 +59,7 @@ int main() {
     return 0;
 }
 
-// showMenu(), viewCart(), removeProduct(), checkout()
+// showMenu(), 
 
 void addProduct() {
 
@@ -76,13 +76,13 @@ void addProduct() {
 
     cart.push_back(product);
 
-    cout << "Product Added Successfully\n\n";
+    cout << "Product Added Successfully 👌\n\n";
 };
 
 void viewCart() {
 
     if (cart.empty()) {
-        cout << "Cart is empty.\n";
+        cout << "Cart is empty 👽.\n";
         return;
     }
 
@@ -106,3 +106,21 @@ void viewCart() {
 
     cout << "=========================================================\n\n";
 };
+
+void removeProduct() {
+    viewCart();
+    int id;
+    cout << "\nEnter Product ID : ";
+    cin >> id;
+
+    if (id < 1 || id > cart.size()) {
+        cout << "Invalid ID ❌\n\n";
+        return;
+    }
+
+    cart.erase(cart.begin() + id - 1);
+
+    cout << "Product Removed Successfull 👍\n";
+}
+
+void checkout() {}
