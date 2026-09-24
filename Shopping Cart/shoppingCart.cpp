@@ -59,7 +59,7 @@ int main() {
     return 0;
 }
 
-// showMenu(), 
+// showMenu() : OPTIONAL, 
 
 void addProduct() {
 
