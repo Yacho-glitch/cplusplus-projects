@@ -47,7 +47,7 @@ int main() {
                 removeProduct();
                 break;
             case 5:
-                cout << "Checkout";
+                checkout();
                 break;
             case 6:
                 cout << "Goodbye";
@@ -123,4 +123,37 @@ void removeProduct() {
     cout << "Product Removed Successfull 👍\n";
 }
 
-void checkout() {}
+void checkout() {
+    // How much does the customer have to pay
+    double total = 0;
+    double subtotal;
+
+    if (cart.empty()) {
+        cout << "\nCart is empty.\n";
+        return;
+    } else {   
+        cout << "\n=========================================================\n";
+        cout << left
+             << setw(20) << "Product"
+             << setw(10)  << "Price"
+             << setw(8)  << "Qty"
+             << setw(8) << "Subtotal"
+             << endl;
+        cout << "=========================================================\n";
+        for (int i = 0; i < cart.size(); i++) {
+            cout << left
+                 << setw(20) << cart[i].name
+                 << setw(10)  << cart[i].price
+                 << setw(8)  << cart[i].quantity
+                 << setw(8) << cart[i].price * cart[i].quantity
+                 << endl;
+            
+            subtotal = cart[i].price * cart[i].quantity;
+            total += subtotal;
+            
+        }
+        
+        cout << "=========================================================\n\n";
+        cout << "Total : " << total << "\n\n";
+    }
+}
