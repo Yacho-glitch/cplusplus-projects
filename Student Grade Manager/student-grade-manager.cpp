@@ -8,7 +8,7 @@ int calculateAvg;
 
 struct Student {
     string nameStd;
-    int idStd;
+    string idStd;
     int dsa;
     int sql;
     int cpp;
@@ -18,12 +18,13 @@ vector<Student> listStd;
 
 void addStudent();
 void showStudents();
+void deleteStudent();
 
 int main() {
 
     int choice;
     do {
-        cout << "===== STUDENT GRADE MANAGER =====\n";
+        cout << "\n===== STUDENT GRADE MANAGER =====\n";
         cout << "1. Add Student\n";
         cout << "2. Show Students\n";
         cout << "3. Search Student\n";
@@ -42,6 +43,12 @@ int main() {
                 break;
             case 2:
                 showStudents();
+                break;
+            case 5:
+                deleteStudent();
+                break;
+            case 8:
+                cout << "Arigato Gozaimasu.";
                 break;
         }
 
@@ -78,25 +85,43 @@ void showStudents() {
         cout << "There is no student included yet.\n";
     } 
 
-    cout << "\n===============================================================\n";
+    cout << "\n===============================================================================================\n";
     cout << left
-         << setw(5)  << "ID"
-         << setw(10) << "Name_STD"
-         << setw(10) << "DataStructureAlgorithms"
-         << setw(10) << "C++"
-         << setw(10) << "SQL"
+         << setw(5)  << "Id"
+         << setw(10) << "ID_STD"
+         << setw(20) << "Name_STD"
+         << setw(36) << "DataStructureAlgorithms"
+         << setw(20) << "C++"
+         << setw(20) << "SQL"
          << endl;
-    cout << "=================================================================\n";
+    cout << "===============================================================================================\n";
 
     for (int i = 0; i < listStd.size(); i++) {
         cout << left
-             << setw(5)  << listStd[i].idStd
+             << setw(5)  << i + 1
+             << setw(10) << listStd[i].idStd
              << setw(20) << listStd[i].nameStd
-             << setw(20) << listStd[i].dsa
+             << setw(36) << listStd[i].dsa
              << setw(20) << listStd[i].cpp
              << setw(20) << listStd[i].sql
              << endl;
     }
-    cout << "=================================================================\n";
+    cout << "===============================================================================================\n";
     
 };
+
+void deleteStudent() {
+    showStudents();
+    int id;
+    std::cout << "\nEnter Student Id : ";
+    cin >> id;
+
+    if (id < 1 || id > listStd.size()) {
+        cout << "Invalid Id ❌\n\n";
+        return;
+    }
+
+    listStd.erase(listStd.begin() + id - 1);
+
+    cout << "Student Informations Deleted Successfully.\n";
+}
