@@ -18,6 +18,7 @@ vector<Student> listStd;
 
 void addStudent();
 void showStudents();
+void editStudent();
 void deleteStudent();
 
 int main() {
@@ -44,6 +45,9 @@ int main() {
             case 2:
                 showStudents();
                 break;
+            case 4:
+                editStudent();
+                break;
             case 5:
                 deleteStudent();
                 break;
@@ -63,8 +67,26 @@ void addStudent() {
     cout << "Enter student name : ";
     std::getline(std::cin >> std::ws, student.nameStd);
 
-    cout << "Enter ID student : ";
-    cin >> student.idStd;
+    
+    while (true) {
+        cout << "Enter ID student : ";
+        cin >> student.idStd;
+        
+        bool exists = false;
+        
+        for (const Student& previousStdId : listStd) {
+            if (previousStdId.idStd == student.idStd) {
+                exists = true;
+                break;
+            }
+        }
+
+        if (exists) {
+            cout << "❌ Student ID already exists. Try another ID.\n";
+        } else {
+            break;
+        }
+    }
 
     cout << "Enter DSA Grade : ";
     cin >> student.dsa;
@@ -83,6 +105,7 @@ void addStudent() {
 void showStudents() {
     if (listStd.empty()) {
         cout << "There is no student included yet.\n";
+        return;
     } 
 
     cout << "\n===============================================================================================\n";
@@ -124,4 +147,18 @@ void deleteStudent() {
     listStd.erase(listStd.begin() + id - 1);
 
     cout << "Student Informations Deleted Successfully.\n";
+}
+
+void editStudent() {
+    int id;
+    cout << "\nEnter student Id : ";
+    cin >> id;
+
+    if (id < 1 || id > listStd.size()) {
+        cout << "Invalid ID ❌\n\n";
+        return;
+    }
+
+    cout << "\nEnter ";
+
 }
