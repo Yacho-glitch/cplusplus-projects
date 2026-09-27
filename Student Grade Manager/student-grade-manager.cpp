@@ -17,7 +17,7 @@ struct Student {
 vector<Student> listStd;
 
 void addStudent();
-void showStudent();
+void showStudents();
 
 int main() {
 
@@ -39,6 +39,9 @@ int main() {
         switch(choice) {
             case 1:
                 addStudent();
+                break;
+            case 2:
+                showStudents();
                 break;
         }
 
@@ -68,4 +71,32 @@ void addStudent() {
     listStd.push_back(student);
 
     std::cout << "Student Informations Added Successfully \n\n";
+};
+
+void showStudents() {
+    if (listStd.empty()) {
+        cout << "There is no student included yet.\n";
+    } 
+
+    cout << "\n===============================================================\n";
+    cout << left
+         << setw(5)  << "ID"
+         << setw(10) << "Name_STD"
+         << setw(10) << "DataStructureAlgorithms"
+         << setw(10) << "C++"
+         << setw(10) << "SQL"
+         << endl;
+    cout << "=================================================================\n";
+
+    for (int i = 0; i < listStd.size(); i++) {
+        cout << left
+             << setw(5)  << listStd[i].idStd
+             << setw(20) << listStd[i].nameStd
+             << setw(20) << listStd[i].dsa
+             << setw(20) << listStd[i].cpp
+             << setw(20) << listStd[i].sql
+             << endl;
+    }
+    cout << "=================================================================\n";
+    
 };
