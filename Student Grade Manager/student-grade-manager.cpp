@@ -16,6 +16,7 @@ struct Student {
 
 vector<Student> listStd;
 
+int getValidGrade();
 void addStudent();
 void showStudents();
 void editStudent();
@@ -86,21 +87,73 @@ void addStudent() {
         } else {
             break;
         }
-    }
+    };
+
+    /*
+
+        repetition
+
+    do {
+        cout << "Enter DSA Grade : ";
+        cin >> student.dsa;
+
+        if (student.dsa < 0 || student.dsa > 20) {
+            cout << "❌ Grade must be between 0 and 20.\n";
+        }
+
+    } while (student.dsa < 0 || student.dsa > 20);
+
+    do {
+        cout << "Enter C++ Grade : ";
+        cin >> student.cpp;
+
+        if (student.cpp < 0 || student.cpp > 20) {
+            cout << "❌ Grade must be between 0 and 20.\n";
+        }
+        
+    } while (student.cpp < 0 || student.cpp > 20);
+    
+    do {
+        cout << "Enter SQL Grade : ";
+        cin >> student.sql;
+
+        if (student.sql < 0 || student.sql > 20) {
+            cout << "❌ Grade must be between 0 and 20.\n";
+        }
+
+    } while (student.sql < 0 || student.sql > 20);
+
+    */
 
     cout << "Enter DSA Grade : ";
-    cin >> student.dsa;
+    student.dsa = getValidGrade();
 
     cout << "Enter C++ Grade : ";
-    cin >> student.cpp;
+    student.cpp = getValidGrade();
 
     cout << "Enter SQL Grade : ";
-    cin >> student.sql;
+    student.sql = getValidGrade();
 
     listStd.push_back(student);
 
     std::cout << "Student Informations Added Successfully \n\n";
 };
+
+int getValidGrade() {
+    int grade;
+
+    do {
+        cin >> grade;
+
+        if (grade < 0 || grade > 20) {
+            cout << "❌ Grade must be between 0 and 20.\n";
+            cout << "TRY AGAIN : ";
+        }
+
+    } while (grade < 0 || grade > 20);
+
+    return grade;
+}
 
 void showStudents() {
     if (listStd.empty()) {
