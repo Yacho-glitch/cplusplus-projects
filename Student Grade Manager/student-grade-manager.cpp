@@ -22,6 +22,7 @@ void showStudents();
 void editStudent();
 void deleteStudent();
 
+
 int main() {
 
     int choice;
@@ -51,6 +52,9 @@ int main() {
                 break;
             case 5:
                 deleteStudent();
+                break;
+            case 6:
+                calculateAvg();
                 break;
             case 8:
                 cout << "Arigato Gozaimasu.";
@@ -247,4 +251,6 @@ void editStudent() {
 
 }
 
-void average() {}
+void calculateAvg() {
+
+}
