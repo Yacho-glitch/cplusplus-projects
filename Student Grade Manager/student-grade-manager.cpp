@@ -212,6 +212,39 @@ void editStudent() {
         return;
     }
 
-    cout << "\nEnter ";
+    cout << "\n===== EDIT STUDENT =====\n";
+    cout << "1. Edit Name\n";
+    cout << "2. Edit DSA Grade\n";
+    cout << "3. Edit C++ Grade\n";
+    cout << "4. Edit SQL Grade\n";
+    cout << "5. Cancel\n";
+
+    int choice;
+    cout << "\nChoose an option : ";
+    cin >> choice;
+
+    switch(choice) {
+        case 1:
+            cout << "Enter the new name : ";
+            std::getline(std::cin >> std::ws, listStd[id - 1].nameStd);
+            break;
+        case 2:
+            cout << "Enter the new DSA grade : ";
+            listStd[id - 1].dsa = getValidGrade();
+            break;
+        case 3:
+            cout << "Enter the new C++ grade : ";
+            listStd[id - 1].cpp = getValidGrade();
+            break;
+        case 4:
+            cout << "Enter the new SQL grade : ";
+            listStd[id - 1].sql = getValidGrade();
+            break;
+        case 5:
+            cout << "Arigato\n";
+            break;
+    }
 
 }
+
+void average() {}
