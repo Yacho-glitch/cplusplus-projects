@@ -4,7 +4,6 @@
 #include <iomanip>
 using namespace std;
 
-int calculateAvg;
 
 struct Student {
     string nameStd;
@@ -21,7 +20,8 @@ void addStudent();
 void showStudents();
 void editStudent();
 void deleteStudent();
-
+void showTopStudent();
+double calculateAvg(const Student& student);
 
 int main() {
 
@@ -54,7 +54,19 @@ int main() {
                 deleteStudent();
                 break;
             case 6:
-                calculateAvg();
+                int num;
+                cout << "\nEnter student id that you want to calculate his average note : ";
+                cin >> num;
+
+                if (num < 1 || num > listStd.size()) {
+                    cout << "Invalid ID ❌\n";
+                    break;
+                }
+
+                cout << "Average : " << calculateAvg(listStd[num - 1]) << endl;
+                break;
+            case 7:
+                showTopStudent();
                 break;
             case 8:
                 cout << "Arigato Gozaimasu.";
@@ -251,6 +263,10 @@ void editStudent() {
 
 }
 
-void calculateAvg() {
+double calculateAvg(const Student& student) {
+    return (student.dsa + student.cpp + student.sql) / 3.0;
+}
+
+void showTopStudent() {
 
 }
