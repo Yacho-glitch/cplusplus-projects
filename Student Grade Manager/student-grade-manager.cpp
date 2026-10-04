@@ -268,5 +268,21 @@ double calculateAvg(const Student& student) {
 }
 
 void showTopStudent() {
+    if (listStd.empty()) {
+        cout << "No student available.\n";
+        return;
+    }
 
+    int topIndex = 0;
+
+    for (int i = 1; i < listStd.size(); i++) {
+        if (calculateAvg(listStd[i]) > calculateAvg(listStd[topIndex])) {
+            topIndex = i;
+        }
+    }
+
+    cout << "\n===== TOP STUDENT =====\n";
+    cout << "Name : " << listStd[topIndex].nameStd << endl;
+    cout << "ID : " << listStd[topIndex].idStd << endl;
+    cout << "Average : " << calculateAvg(listStd[topIndex]) << endl;
 }
